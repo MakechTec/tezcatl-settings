@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@makechtec/tezcatl-cli": "^1.0.9",
+    "@makechtec/tezcatl-constants": "^1.0.0",
+    "@types/node": "^18.0.0"
+  },
+  "name": "@makechtec/tezcatl-settings",
+  "version": "1.0.1",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc && terser prebuild/Settings.js --output index.js",
+    "test": "node test/index.mjs"
+  },
+  "author": "makechtec",
+  "license": "MIT",
+  "description": ""
+}

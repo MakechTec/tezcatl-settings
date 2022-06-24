@@ -1,0 +1,1 @@
+terser prebuild/Settings.js --output index.js
