@@ -7,16 +7,30 @@ export const Settings = {
     get: () => {
         const text = Reader.read(cwd() + "/" +CONFIG_FILE);
         return JSON.parse(text);
-    },
+    }
 
-    read: (filename: string) : any => {
-        const text = Reader.read(filename);
+};
+
+export class SettingsReader{
+
+    private filename: string;
+
+    constructor(filename: string){
+        this.filename = filename;
+    }
+
+    setFilename(filename: string){
+        this.filename = filename;
+    }
+
+    read() : any{
+        const text = Reader.read(this.filename);
         return JSON.parse(text);
-    },
+    }
 
     item(key: string): string {
         try{
-            const item = Settings.get()[key];
+            const item = this.read()[key];
             if(item === undefined || item === null){
                 throw new Error("Item not found");
             }
@@ -24,10 +38,9 @@ export const Settings = {
             return item;
         }
         catch(e){
-            console.info("INFO: la propiedad " + key + " no existe en el archivo de configuración");
+            console.info("INFO: not found property " + key + " in settings file");
             return "";
         }
 
     }
-
-};
+}
